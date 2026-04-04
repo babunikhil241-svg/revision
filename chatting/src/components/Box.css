@@ -1,0 +1,78 @@
+/* Main container padding ke liye */
+.main-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Ye main "Flex" property hai jo dono ko bagal mein layegi */
+.content-row {
+  display: flex;
+  justify-content: space-between; /* Beech mein jagah rakhega */
+  align-items: flex-start;        /* Upar se align rakhega */
+  gap: 40px;                      /* Text aur Photo ke beech ka gap */
+  margin-top: 20px;
+}
+
+/* Text wala hissa */
+.text-section {
+  flex: 1; /* Jitni jagah hai le lega */
+}
+
+.text-content-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.text-content-body {
+  line-height: 2; /* Line ke beech ki gap screenshot jaisi */
+}
+
+/* Image wala hissa */
+.image-content {
+  flex: 1;
+ 
+  display: flex;
+  justify-content: flex-end; /* Image ko right side rakhega */
+}
+/* --- Yeh aapka updated CSS hai (jo apne change kiya hai) --- */
+
+.box-image {
+  width: 620px; /* Fixed width: image screen se bahar ja sakti hai */
+  height: 350px; /* Fixed height */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  margin-top: -110px; /* Negative margin */
+  object-fit: cover; /* Taki image stretch na ho */
+}
+.kuchnhi{
+    color: rgb(104, 157, 25);
+}
+
+/* ----------------------------------------------------------- */
+
+
+/* --- AB YAHAN SE NAYA RESPONSIVE CODE START HAI --- */
+
+/* Mobile ke liye: Isko apne CSS file ke sabse niche paste karein */
+@media (max-width: 768px) {
+  .content-row {
+    flex-direction: column; /* Stack vertically (ek ke niche ek) */
+    gap: 30px; /* Space kam kar di mobile ke liye */
+  }
+
+  /* .image-content container ko pure width par lane ke liye */
+  .image-content {
+    justify-content: center; /* Image ko center mein rakhega */
+    width: 100%;
+  }
+
+  /* **KHAAS UPDATE FOR .box-image** */
+  .box-image {
+    width: 100%;       /* Fixed width (620px) ko mobile par 100% kar diya */
+    height: auto;      /* Fixed height (350px) ko auto kiya taki aspect ratio sahi rahe */
+    max-width: 620px;  /* Lekin apne original size se bada na ho jaye */
+    margin-top: 0;     /* **IMP:** Desktop wala negative margin hata diya, nahi toh yeh text se takrayega */
+  }
+}

@@ -1,0 +1,288 @@
+/* CourseCatalog.css - Z-INDEX 100% FIXED */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background:white;
+  color: black;
+  overflow-x: hidden;
+  position: relative; /* ← ROOT STACKING CONTEXT */
+}
+
+/* Video Background */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.3;
+}
+
+/* WRAPPER - Creates proper stacking context */
+.app-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* Back Button - ULTRA HIGH Z-INDEX */
+.back-btn {
+  position: fixed !important;
+  top: 90px !important;
+  left: 30px !important;
+  z-index: 9999 !important;  /* ← MAXIMUM */
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(16, 185, 129, 0.95));
+  color: white !important;
+  padding: 14px 24px !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(30, 58, 138, 0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-btn:hover {
+  transform: translateX(-8px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(30, 58, 138, 0.95));
+}
+
+.back-btn i {
+  margin-right: 8px;
+}
+
+/* Main Container */
+.container {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 120px 20px 40px; /* Extra top padding for navbar */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Steps */
+.step {
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(45deg, #f59e0b, #10b981);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.header p {
+  font-size: 1.3rem;
+  color: #94a3b8;
+}
+
+/* Course Grid */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.course-card {
+  position: relative;
+  z-index: 15;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #1e3a8a, #10b981, #f59e0b);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.course-card:hover::before {
+  transform: scaleX(1);
+}
+
+.course-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 30px 80px rgba(16, 185, 129, 0.4);
+  border-color: #10b981;
+}
+
+.course-card i {
+  font-size: 3.8rem;
+  color: #00f2fe;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.6));
+  display: block;
+}
+
+.course-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.duration {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.price-tag {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #f59e0b, #10b981);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Detail Card */
+.detail-card {
+  position: relative;
+  z-index: 15;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 28px;
+  padding: 3.5rem;
+  max-width: 650px;
+  margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Batch Options */
+.batch-options {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.batch-chip {
+  position: relative;
+  z-index: 15;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  font-weight: 600;
+}
+
+.batch-chip:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+}
+
+.batch-chip.selected {
+  background: linear-gradient(45deg, #10b981, #059669);
+  border-color: #10b981;
+  color: white;
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+}
+
+/* Primary Button */
+.btn-primary {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(45deg, #f59e0b, #10b981);
+  color: white;
+  border: none;
+  border-radius: 35px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(245, 158, 11, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .back-btn {
+    top: 85px !important;
+    left: 15px !important;
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+  }
+  
+  .container {
+    padding: 100px 15px 20px !important;
+  }
+  
+  .course-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-btn {
+    top: 75px !important;
+    left: 10px !important;
+    padding: 10px 16px !important;
+  }
+}

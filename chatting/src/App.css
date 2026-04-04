@@ -1,0 +1,723 @@
+.App {
+  min-height: 100vh;
+  animation: pageFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+@keyframes pageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: navbarSlideIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes navbarSlideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.footer {
+  background-color: #0c0c0cd5;
+  color: #fff;
+  padding: 50px 10% 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-section { flex: 1; min-width: 280px; }
+
+/* Heading style with the green underline underline from image */
+.footer-heading {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a4d2e; /* Dark Green underline */
+  display: inline-block;
+}
+
+/* Quick Links 2-Column Grid */
+.quick-links-container { display: flex; gap: 40px; }
+.quick-links-container ul { list-style: none; padding: 0; }
+.quick-links-container li { 
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 12px; 
+  color: #eeecec;
+}
+
+/* Link Hover Effect: Green Outline & Text Color */
+.footer-section a {
+  text-decoration: none;
+  color: #ccc;
+  transition: all 0.3s ease;
+  padding: 2px 8px;
+  border: 1px solid transparent;
+}
+
+.footer-section a:hover {
+  color: #4ade80; /* Light Green */
+  border: 1px solid #4ade80; /* Green Outline */
+  border-radius: 4px;
+}
+
+/* Icon Colors */
+.icon-green { color: #fff; border: 1px solid #fff; padding: 4px; border-radius: 2px; margin-right: 10px; }
+.quick-links-container svg { color: #fff; margin-right: 8px; }
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  text-align: center;
+  position: relative;
+}
+
+.scroll-top {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: #1a4d2e;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(45deg, #1e3a8a, #10b981, #059669, #f59e0b);
+  background-size: 300% 300%;
+  animation: coachingFlow 12s ease-in-out infinite;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+@keyframes coachingFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Course Cards - Clickable */
+.course-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: #3498db;
+}
+
+.course-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 15px;
+  
+  margin-bottom: 20px;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 10px 0;
+}
+
+/* Hover Effect: Glow and Speed */
+.navbar:hover {
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.navbar:hover::before {
+  opacity: 1; /* Brightens the color on hover */
+  animation-duration: 4s; /* Makes the flow faster on hover */
+}
+
+/* A subtle "Light Sweep" shimmer that doesn't move content */
+.navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  transition: 0.8s;
+  z-index: -1;
+}
+
+.navbar:hover::after {
+  left: 150%; /* The shimmer passes across the bar */
+}
+
+/* The Background Animation */
+@keyframes auroraFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* App.css */
+
+.hero-content {
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Main Title Typing Effect */
+.typewriter-main {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    
+    /* White-Silver Gradient */
+    background: linear-gradient(to right, #ffffff, #8ecae6, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    
+    /* Cursor Effect */
+   ;
+    
+    /* Animations: 
+       1. typing: Text ko reveal karega (25 characters ke liye 25 steps)
+       2. blink: Cursor ko chamkayega
+       3. shine: Gradient ko move karega */
+    animation: 
+        typing-main 5s steps(210, end) infinite alternate,
+        blink-cursor 0.75s step-end infinite,
+        shine-move 3s linear infinite;
+}
+
+/* Subtitle Letter Animation */
+.subtitle-reveal {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #d1d1d1;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+.letter-pop {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: letter-fade-in 0.6s forwards;
+}
+
+/* Keyframes */
+@keyframes typing-main {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #ffffff; }
+}
+
+@keyframes shine-move {
+    to { background-position: 200% center; }
+}
+
+@keyframes letter-fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-container { 
+  max-width: 1200px; margin: 0 auto; 
+  padding: 1rem 2rem; display: flex; 
+  justify-content: space-between; align-items: center; 
+  
+}
+/* Target the image inside the logo container */
+.logo img {
+  height: 100%;       /* Fills the 50px height of the parent */
+  width:auto;        /* Keeps aspect ratio intact */
+  display: block;     /* Removes weird bottom whitespace */
+  object-fit: contain; /* Ensures the whole logo fits without clipping */
+  margin-left: -50px;
+}
+
+.section.testimonials {
+  padding: 30px 20px;
+  max-height: 460px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
+
+.testimonial {
+  background: #f8f9fa;
+  padding: 16px 18px;
+  border-radius: 12px;
+  max-width: 320px;
+  text-align: center;
+  flex: 1 1 280px;
+}
+
+/* circular avatar with nice hover effect */
+.testimonial-avatar {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  overflow: hidden;
+  border: 3px solid #007bff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.2);
+}
+
+.testimonial-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* hover details – circle ke upar show hoga (andar nahi) */
+.hover-details {
+  position: absolute;
+  left: 50%;
+  top: -64px;
+  transform: translateX(-50%);
+  width: 180px;
+
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  z-index: 1000;
+}
+
+.testimonial-avatar:hover .hover-details {
+  opacity: 1;
+}
+
+
+
+.hover-details .name {
+  font-weight: bold;
+}
+
+.hover-details .course {
+  font-size: 0.8rem;
+}
+
+.hover-details .rating {
+  font-size: 0.9rem;
+}
+
+/* testimonial text */
+.testimonial p {
+  margin: 8px 0 6px 0;
+  font-style: italic;
+}
+
+.testimonial span {
+  font-weight: 600;
+  color: #333;
+}
+
+
+
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
+.nav-menu li { list-style: none; }
+.nav-menu a { 
+  color: #333; text-decoration: none; 
+  padding: 0.5rem 1rem; border-radius: 8px; 
+  transition: all 0.3s; 
+}
+.nav-menu a:hover { background: #f0f0f0; color: #ff6b6b; }
+
+/* Hero */
+.hero { 
+  height: 88vh; 
+  /* Added a black gradient overlay before the image URL */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('student.jpg') no-repeat center center;
+  background-size: cover;
+  
+  /* Removed opacity: .8 so the background is solid and dark */
+  opacity: .93; 
+  
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  color: rgb(16, 210, 100); 
+  padding-top: 80px; 
+}
+
+
+/* Added text-shadow for extra clarity on the letters */
+.hero-content h1 { 
+  font-size: 4rem; 
+  margin-bottom: 1rem; 
+  color: white; 
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.hero-content p { 
+  font-size: 1.5rem; 
+  margin-bottom: 2rem; 
+  color: white; 
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+}
+.cta-button { 
+  display: inline-block; padding: 1rem 2.5rem; 
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4); 
+  color: white; text-decoration: none; 
+  border-radius: 50px; font-weight: bold; 
+}
+
+/* Sections */
+.section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+.section-title { 
+  text-align: center; font-size: 3rem; margin-bottom: 3rem; 
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4); 
+  background-clip: text; -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+}
+.courses-grid { 
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 2rem; 
+}
+.course-card { 
+  background: rgb(197, 191, 191); border-radius: 20px; padding: 2rem; 
+  color: #070707;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; 
+  transition: transform 0.3s; 
+}
+
+.course-card:hover { transform: translateY(-10px); }
+.course-icon { font-size: 3rem; margin-bottom: 1rem; }
+.quick-links-section { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+.quick-links { 
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1.5rem; 
+}
+.quick-link { 
+  display: flex; align-items: center; padding: 1.5rem; 
+  background: linear-gradient(135deg, #667eea, #764ba2); 
+  color: white; text-decoration: none; border-radius: 15px; 
+  transition: transform 0.3s; 
+}
+.quick-link:hover { transform: translateX(10px); }
+
+
+/* Add to your existing App.css */
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+}
+.hamburger {
+  display: block; width: 25px; height: 3px; background: #333;
+  transition: 0.3s; position: relative;
+}
+.hamburger::before, .hamburger::after {
+  content: ''; position: absolute; width: 25px; height: 3px; background: #333; left: 0;
+  transition: 0.3s;
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+.hamburger.open { background: transparent; }
+.hamburger.open::before { top: 0; transform: rotate(45deg); }
+.hamburger.open::after { top: 0; transform: rotate(-45deg); }
+
+/* Hero Buttons */
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.cta-secondary {
+  padding: 1rem 2rem; border: 2px solid white; color: white;
+  text-decoration: none; border-radius: 50px; font-weight: bold;
+  transition: all 0.3s;
+}
+.cta-secondary:hover { background: white; color: #667eea; }
+
+/* Testimonials */
+.testimonials {background: linear-gradient(135deg, #b12ec0 0%, #6a00b6 100%); color: white; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.testimonial {
+  background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px;
+  backdrop-filter: blur(10px);
+ 
+}
+/* Student Success section – professional dark blue + black gradient */
+.section.testimonials {
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #6565f0 0%, #b8afb9 40%, #c0a132 100%);
+  color: #e0e0ff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* section title – soft white */
+.section.testimonials .section-title {
+  margin-bottom: 16px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+/* testimonials layout */
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
+
+/* individual testimonial card */
+.testimonial {
+  background: rgba(15, 25, 45, 0.75);
+  padding: 16px 18px;
+  border-radius: 14px;
+  max-width: 320px;
+  text-align: center;
+  flex: 1 1 280px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(70, 130, 220, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* card hover – light lift + nicer shadow */
+.testimonial:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
+}
+
+/* soft yellow / golden light from top on hover */
+.testimonial::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255, 240, 180, 0.5),   /* soft yellow */
+    rgba(255, 230, 150, 0.3),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.testimonial:hover::before {
+  opacity: 1;
+  animation: fadeTopLight 0.7s ease-in-out infinite alternate;
+}
+
+/* subtle animation for top light */
+@keyframes fadeTopLight {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: -50px;
+    opacity: 0.75;
+  }
+}
+
+/* avatar – clean blue border */
+.testimonial-avatar {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 3px solid #4a90e2;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+  cursor: pointer;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* hover details (name, course, rating) */
+.hover-details {
+  position: absolute;
+  left: 50%;
+  top: -64px;
+  transform: translateX(-50%);
+  width: 170px;
+  background: rgba(0, 0, 0, 0.92);
+  color: #ffe6a7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-avatar:hover + .hover-details,
+.testimonial-avatar:hover .hover-details {
+  opacity: 1;
+}
+
+/* testimonial text styling */
+.testimonial p {
+  margin: 8px 0 4px 0;
+  font-style: italic;
+  color: #d0e0ff;
+}
+
+.testimonial span {
+  font-weight: 600;
+  color: #f0e6a0;
+}
+
+.testimonial p { font-size: 1.2rem; margin-bottom: 1rem; font-style: italic; }
+.testimonial span { font-weight: bold; color: #ffd700; }
+
+/* Course Price */
+.course-price {
+  display: block; background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white; padding: 0.5rem 1rem; border-radius: 25px;
+  margin-top: 1rem; font-weight: bold;
+}
+.testimonial {
+  background: rgba(40, 36, 44, 0.85);  /* और transparent */
+  backdrop-filter: blur(10px);         /* glass effect */
+  border: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+
+/* Quick Links Buttons */
+.quick-links button { border: none; cursor: pointer; font-size: 1rem; }
+.whatsapp { background: #25D366 !important; }
+
+/* Modals */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8); display: flex; align-items: center;
+  justify-content: center; z-index: 2000; backdrop-filter: blur(5px);
+}
+.modal {
+  background: white; max-width: 500px; width: 90%; border-radius: 20px;
+  padding: 2rem; position: relative; max-height: 90vh; overflow-y: auto;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem; background: none;
+  border: none; font-size: 2rem; cursor: pointer; color: #999;
+}
+.modal h3 { margin-bottom: 1.5rem; color: #333; text-align: center; }
+
+/* Forms */
+.contact-form, .admission-form {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.contact-form input, .admission-form input,
+.contact-form textarea, .admission-form select {
+  padding: 1rem; border: 2px solid #eee; border-radius: 10px;
+  font-size: 1rem; transition: border-color 0.3s;
+}
+.contact-form input:focus, .admission-form input:focus,
+.contact-form textarea:focus, .admission-form select:focus {
+  outline: none; border-color: #4ecdc4;
+}
+.contact-form button, .admission-form button {
+  padding: 1rem; background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white; border: none; border-radius: 10px;
+  font-size: 1.1rem; font-weight: bold; cursor: pointer;
+}
+
+/* Mock Test */
+.mocktest-modal { max-width: 600px; }
+.mocktest-content { line-height: 1.6; }
+.question { margin-bottom: 2rem; }
+.options { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.options label { 
+  padding: 0.8rem; background: #f8f9fa; border-radius: 8px;
+  cursor: pointer; transition: background 0.3s;
+}
+.options label:hover { background: #e9ecef; }
+.mocktest-submit { width: 100%; }
+
+/* Contact Info */
+.contact-info p { margin: 0.5rem 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .nav-menu { 
+    position: fixed; top: 80px; left: 0; right: 0;
+    background: white; flex-direction: column; padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-100%);
+    transition: transform 0.3s;
+  }
+  .nav-menu-open { transform: translateY(0); }
+  .hero-content h1 { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+}
+
